@@ -13,14 +13,19 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
+            { 
+                test: /\.ts$/, 
+                loader: 'ts-loader',
+                include: [path.resolve(__dirname, 'src')]
+            },
         ],
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-        // filename: 'index.js',
-        filename: 'index.ts',
+        publicPath: 'dist',
+        filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
     },
     plugins: [
