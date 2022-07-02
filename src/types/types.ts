@@ -1,4 +1,4 @@
-export interface IDate {
+export interface INews {
   draw(data: Array<DataNews>): void;
 }
 
@@ -12,6 +12,7 @@ export type DataNews = {
   description: string;
   url: string;
   content: string;
+  id: string;
 };
 
 export type Source = {

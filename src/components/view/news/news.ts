@@ -1,8 +1,8 @@
 import './news.css';
-import { IDate } from '../../../types/types';
+import { INews } from '../../../types/types';
 import { DataNews } from '../../../types/types';
 
-class News implements IDate {
+class News implements INews {
   draw(data: Array<DataNews>) {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
