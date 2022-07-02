@@ -24,7 +24,7 @@ const baseConfig = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-        publicPath: 'dist',
+        // publicPath: './dist',
         filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
     },
