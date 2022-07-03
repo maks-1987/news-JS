@@ -4,7 +4,7 @@ class Loader {
   constructor(public baseLink: string, public options: object) {}
 
   protected getResp(
-    { endpoint, options = {} }: { endpoint: string; options: object },
+    { endpoint, options = {} }: { endpoint: string; options?: object },
     callback = () => {
       console.error('No callback for GET response');
     }
