@@ -3,7 +3,7 @@ export interface INews {
 }
 
 export interface IAppView {
-  drawNews(data: Response): void;
+  drawNews(data: ResponseData): void;
   drawSources(data: ResponseSources): void;
 }
 
@@ -23,7 +23,7 @@ export type Source = {
   name: string;
 };
 
-export type Response = {
+export type ResponseData = {
   status: string;
   totalResults: number;
   articles: Article[];
@@ -43,3 +43,22 @@ export type Sources = {
   language: string;
   country: string;
 };
+
+export const enum StatusCodes {
+  'OK' = 200,
+  'BadRequest' = 400,
+  'FileNotFound' = 404,
+  'Unauthorized' = 401,
+  'TooManyRequests' = 429,
+  'ServerError' = 500,
+}
+
+export type Indexing = {
+  [key: string]: string;
+};
+
+/* export type ErrorResponse = {
+  status: string;
+  code: string;
+  message: string;
+}; */

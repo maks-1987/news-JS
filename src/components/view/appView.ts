@@ -1,4 +1,4 @@
-import { IAppView, Response, ResponseSources } from '../../types/types';
+import { IAppView, ResponseData, ResponseSources } from '../../types/types';
 import News from './news/news';
 import Sources from './sources/sources';
 
@@ -11,7 +11,7 @@ export class AppView implements IAppView {
     this.sources = new Sources();
   }
 
-  drawNews(data: Response) {
+  drawNews(data: ResponseData) {
     const values = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
