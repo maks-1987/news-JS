@@ -1,11 +1,11 @@
-import { Indexing, StatusCodes } from '../../types/types';
+import { EverythingResponse, Indexing, SourcesResponse, StatusCodes } from '../../types/types';
 
 class Loader {
   constructor(public baseLink: string, public options: object) {}
 
-  protected getResp(
+  getResp(
     { endpoint, options = {} }: { endpoint: string; options?: object },
-    callback = () => {
+    callback = (data: SourcesResponse | EverythingResponse) => {
       console.error('No callback for GET response');
     }
   ) {
@@ -28,18 +28,17 @@ class Loader {
 
     Object.keys(urlOptions).forEach((key) => {
       url += `${key}=${urlOptions[key]}&`;
-      console.log(url);
     });
 
     return url.slice(0, -1);
   }
 
-  private load(method: string, endpoint: string, callback: (data: Response) => void, options = {}) {
+  load(method: string, endpoint: string, callback: (data: SourcesResponse | EverythingResponse) => void, options = {}) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
-      .then((data) => callback(data))
-      .catch((err) => console.error(err));
+      .then((data: EverythingResponse | SourcesResponse) => callback(data))
+      .catch((err: Error) => console.error(err));
   }
 }
 
