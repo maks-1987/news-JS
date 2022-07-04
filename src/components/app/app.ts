@@ -1,28 +1,24 @@
-// import AppController from '../controller/controller';
-// import { AppView } from '../view/appView';
+import { EverythingResponse, SourcesResponse } from '../../types/types';
+import AppController from '../controller/controller';
+import { AppView } from '../view/appView';
 
-// type IApp = {
-//     controller?: AppController
-//     view?: AppView
+class App {
+  controller: AppController;
+  view: AppView;
 
-//     start(): void
-// }
+  constructor() {
+    this.controller = new AppController();
+    this.view = new AppView();
+  }
 
-// class App {
-//     // controller: AppController;
-//     // view: AppView;
+  start() {
+    document
+      .querySelector('.sources')
+      ?.addEventListener('click', (e) =>
+        this.controller.getNews(e, (data: EverythingResponse) => this.view.drawNews(data))
+      );
+    this.controller.getSources((data: SourcesResponse) => this.view.drawSources(data));
+  }
+}
 
-//     constructor() {
-//         this.controller = new AppController();
-//         this.view = new AppView();
-//     }
-
-//     start() {
-//         document
-//             .querySelector('.sources')
-//             .addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
-//         this.controller.getSources((data) => this.view.drawSources(data));
-//     }
-// }
-
-// export default App;
+export default App;
